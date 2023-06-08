@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const {emailSignUp} = useAuth()
@@ -99,7 +100,7 @@ const SignUp = () => {
                             {errors.password && <p className="text-red-500">Password Must be least 6 characters with a capital letter and a special character</p>}
                             {errors.email && <p className="text-red-500">Invalid Email!</p>}
                             {error && <p className="text-red-500">{error}</p>}
-                            
+                            <p>Already have an Account?<Link to='/login' className="text-purple-500"> Login Here</Link></p>
 
         <div className="form-control mt-6">
           <button type="submit" className="btn btn-primary">Sign Up</button>

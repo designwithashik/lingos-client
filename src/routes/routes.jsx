@@ -3,6 +3,9 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
+import StudentDashboard from "../layouts/StudentDashboard";
+import SelectedClasses from "../pages/Student/SelectedClasses";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -20,9 +23,22 @@ const routes = createBrowserRouter([
             {
                 path: 'sign-up',
                 element: <SignUp/>
+            },
+           
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><StudentDashboard /></PrivateRoute>,
+        children: [
+            {
+                path: 'selected-classes',
+                element: <SelectedClasses/>
             }
         ]
+        
     }
+
 ])
 
 export default routes;

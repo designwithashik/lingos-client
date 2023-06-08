@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 const Login = () => {
     const { googleLogin, emailLogin } = useAuth();
     
@@ -54,7 +55,7 @@ const Login = () => {
                             {/**TODO: Empty Login Validation */}
                             {/* {errors.password || errors.email? setError('Please Fill Up'): setError('')} */}
                             {error && <p className="text-red-500">{error}</p>}
-
+                            <p>Create an Account <Link to='/sign-up' className="text-purple-500">Here</Link></p>
         <div className="form-control mt-6">
                                 <button type="submit" className="btn btn-primary">Login</button>
                                 

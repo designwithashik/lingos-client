@@ -3,7 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
-    const { user } = useAuth();
+    const { user, logOut} = useAuth();
     console.log(user)
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -25,8 +25,15 @@ const NavigationBar = () => {
     const navItems = <>
     
     <li><Link to='/'>Home</Link></li>
+    <li><Link to='/instructors'>Instructors</Link></li>
+    <li><Link to='/Classes'>Classes</Link></li>
         
-    </>
+  </>
+  
+
+  const handleLogOut = () => {
+    logOut()
+  }
     
     return (
         <div className="navbar bg-base-100">
@@ -47,7 +54,12 @@ const NavigationBar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <p className="btn">{user? <Link>Dashboard</Link>: <Link to='/login'>Login</Link>}</p>
+    {user?  <> 
+    <img className='w-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /> 
+         
+          <p onClick={handleLogOut} className="btn">Log Out</p>
+          </>
+: <p className="btn"><Link to='/login'>Login</Link></p>}
     <button className="btn btn-square btn-ghost">
           <label className="swap swap-rotate w-12 h-12">
             <input

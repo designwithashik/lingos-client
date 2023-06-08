@@ -8,19 +8,29 @@ const AuthProvider = ({ children }) => {
     
     const auth = getAuth(app);
     const [user, setUser] = useState('')
+    const [loading, setLoading] = useState(true)
+    console.log(user)
+    const name = 'rabbi'
 
     const googleProvider = new GoogleAuthProvider()
     const googleLogin = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     useEffect(() => {
-        onAuthStateChanged(auth, currentUser => {
+        const unsubscribe =    onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            setLoading(false)
         })
-    },[])
+        return () => {
+            return unsubscribe();
+        }
+    },[auth])
     const authInfo = {
         googleLogin,
-        user
+        user,
+        loading,
+        name
     }
     return (
         <AuthContext.Provider value={authInfo}>

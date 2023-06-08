@@ -7,6 +7,7 @@ import StudentDashboard from "../layouts/StudentDashboard";
 import SelectedClasses from "../pages/Student/SelectedClasses";
 import PrivateRoute from "./PrivateRoute";
 import Classes from "../pages/Classes/Classes";
+import Instructors from "../pages/Instructors/Instructors";
 
 const routes = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
             {
                 path: 'classes',
                 element: <Classes/>
+            },
+            {
+                path: 'instructors',
+                element: <Instructors/>
             }
            
         ]

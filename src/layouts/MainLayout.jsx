@@ -3,6 +3,8 @@ import NavigationBar from "../pages/Shared/NavigationBar";
 import Footer from "../pages/Shared/Footer";
 
 const MainLayout = () => {
+  
+
     return (
         <div>
             <NavigationBar />

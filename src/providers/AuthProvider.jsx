@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
     const emailSignUp = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
-    const emailLogIn = (email, password) => {
+    const emailLogin = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     useEffect(() => {
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         googleLogin,
         emailSignUp,
-        emailLogIn,
+        emailLogin,
         user,
         loading,
         name,

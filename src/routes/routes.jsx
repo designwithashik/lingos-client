@@ -6,6 +6,7 @@ import SignUp from "../pages/Authentication/SignUp";
 import StudentDashboard from "../layouts/StudentDashboard";
 import SelectedClasses from "../pages/Student/SelectedClasses";
 import PrivateRoute from "./PrivateRoute";
+import Classes from "../pages/Classes/Classes";
 
 const routes = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
                 path: 'sign-up',
                 element: <SignUp/>
             },
+            {
+                path: 'classes',
+                element: <Classes/>
+            }
            
         ]
     },

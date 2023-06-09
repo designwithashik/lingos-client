@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Footer from "../pages/Shared/Footer";
 import useAuth from "../hooks/useAuth";
 
@@ -36,9 +36,16 @@ const DashboardLayout = () => {
             <img src={'https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f58db6031cb325cfbaf366a330cf78148c0444a/Sun.png?disposition=inline'} alt="light" className="w-8 h-8 swap-on" />
             <img src={'https://media.istockphoto.com/id/1334613123/vector/moon-and-star-black-icon-of-moon-for-night-pictogram-of-crescent-and-star-logo-for-sleep-and.jpg?s=612x612&w=0&k=20&c=Gy6DGTiwY2lsGPXRr2f7kqPELZEUtG1MsSEce1BkPdo='} alt="dark" className="w-8 h-8 swap-off" />
           </label>
-        </button>    </li>                  
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
+              </button></li>    
+              <li><Link to='/dashboard/home'>Student Home</Link></li>
+              <li><Link to='/dashboard/selected-classes'> Home</Link></li>
+              <li><Link to='/dashboard/'>Student Home</Link></li>
+              
+            
+              <hr />
+              <li><Link to='/'>Home</Link></li>
+    <li><Link to='/instructors'>Instructors</Link></li>
+    <li><Link to='/classes'>Classes</Link></li>
     </ul>
   
   </div>

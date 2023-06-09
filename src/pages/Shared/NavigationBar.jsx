@@ -13,11 +13,11 @@ const NavigationBar = () => {
         }
       };
     
-      useEffect(() => {
-        localStorage.setItem("theme", theme);
-        const localTheme = localStorage.getItem("theme");
-        document.querySelector("html").setAttribute("data-theme", localTheme);
-      }, [theme]);
+      // useEffect(() => {
+      //   localStorage.setItem("theme", theme);
+      //   const localTheme = localStorage.getItem("theme");
+      //   document.querySelector("html").setAttribute("data-theme", localTheme);
+      // }, [theme]);
     const navItems = <>
     
     <li><Link to='/'>Home</Link></li>

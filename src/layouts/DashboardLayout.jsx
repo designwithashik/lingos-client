@@ -38,8 +38,9 @@ const DashboardLayout = () => {
           </label>
               </button></li>    
               <li><Link to='/dashboard/home'>Student Home</Link></li>
-              <li><Link to='/dashboard/selected-classes'> Home</Link></li>
-              <li><Link to='/dashboard/'>Student Home</Link></li>
+              <li><Link to='/dashboard/selected-classes'>Selected Classes</Link></li>
+              <li><Link to='/dashboard/manage-classes'>Manage Classes</Link></li>
+              <li><Link to='/dashboard/add-class'>Add A Class</Link></li>
               
             
               <hr />

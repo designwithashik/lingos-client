@@ -51,7 +51,7 @@ const NavigationBar = () => {
   </div>
   <div className="navbar-end">
     {user?  <> 
-    <img className='w-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /> 
+    <Link to='dashboard/home'><img className='w-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /></Link> 
          
           <p onClick={handleLogOut} className="btn">Log Out</p>
           </>

@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
-    const { user, logOut} = useAuth();
+    const { user, logOut, setTheme, theme} = useAuth();
     console.log(user)
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-      );
-    
-      const handleToggle = (e) => {
+    const handleToggle = (e) => {
         if (e.target.checked) {
           setTheme("dark");
         } else {

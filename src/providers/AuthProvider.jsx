@@ -5,6 +5,8 @@ import { app } from "../firebase/firebase.config";
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
+
+
     
     const auth = getAuth(app);
     const [user, setUser] = useState('')
@@ -35,7 +37,23 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unsubscribe();
         }
-    },[auth])
+    }, [auth])
+    
+
+
+    //toggle mode
+
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+      );
+    
+      
+    
+      useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme);
+      }, [theme]);
     const authInfo = {
         googleLogin,
         emailSignUp,
@@ -44,6 +62,8 @@ const AuthProvider = ({ children }) => {
         loading,
         name,
         logOut,
+        theme,
+        setTheme
 
     }
     return (

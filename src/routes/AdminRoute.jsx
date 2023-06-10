@@ -5,13 +5,14 @@ import useAdminVerify from "../hooks/useAdminVerify";
 const AdminRoute = ({ children }) => {
     const { loading, user } = useAuth()
     const [isAdmin, isAdminLoading] = useAdminVerify();
+
     console.log(isAdmin)
     const location = useLocation()
     if (loading || isAdminLoading) {
         return <h2>Wait a bit...</h2>
     }
 
-    if (user || isAdmin === true) {
+    if (user && isAdmin === true) {
         return <>{children}</>
     }
 

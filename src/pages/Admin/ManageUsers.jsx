@@ -3,7 +3,6 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import {FaChalkboardTeacher, FaUserShield} from 'react-icons/fa';
 import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle";
-import { useState } from "react";
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure()
     const {data: users = [], refetch} = useQuery(['users'], async () => {
@@ -20,7 +19,6 @@ const ManageUsers = () => {
             .then(data => {
                 
                 if (data.modifiedCount) {
-                    setDisable('admin')
                     refetch()
                     Swal.fire({
                         title: `${user.name} has been promoted to Admin`,

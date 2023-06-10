@@ -1,13 +1,50 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const { user } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const onSubmit = clsData => {
+        console.log(clsData)
+        const { className, classImage, email, instructor, price,seats} = clsData;
+        const saveCls = {name:className,image:classImage , email, instructor, price, seats}
+        fetch('http://localhost:3000/classes',
+            {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveCls)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              
 
+              })
+            
 
-        console.log(data);
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed up successfully'
+              })
+            }
+
+            })
+
+      
 
     }
     return (
@@ -49,7 +86,8 @@ const AddClass = () => {
                             <label className="label">
                                 <span className="label-text">Instructor Name</span>
                             </label>
-                            <input disabled type='text'
+                            {/* TODO: instructor allowing data while button is disabled */}
+                            <input type='text'
                                 defaultValue={user?.displayName}
                                 className="input input-bordered" {...register("instructor")} />
 

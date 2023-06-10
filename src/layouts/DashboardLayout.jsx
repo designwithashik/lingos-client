@@ -7,6 +7,7 @@ import useInstructorVerify from "../hooks/useInstructorVerify";
 const DashboardLayout = () => {
   const [isAdmin] = useAdminVerify()
   const [isInstructor] = useInstructorVerify()
+  console.log('instructor', isInstructor)
     const {setTheme, theme} = useAuth()
     const handleToggle = (e) => {
         if (e.target.checked) {

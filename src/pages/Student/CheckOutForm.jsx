@@ -99,7 +99,7 @@ const CheckOutForm = ({ cls }) => {
 
 
   return (
-    <>
+    <div className="checkoutform">
     <form className="mt-5" onSubmit={handleSubmit}>
       <CardElement
         options={{
@@ -126,7 +126,7 @@ const CheckOutForm = ({ cls }) => {
 
 
 
-          </>)
+          </div>)
 }
 
 export default CheckOutForm;

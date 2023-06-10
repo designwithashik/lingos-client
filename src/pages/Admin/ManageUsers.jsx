@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import {FaChalkboardTeacher, FaUserShield} from 'react-icons/fa';
 import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle";
+import { useState } from "react";
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure()
     const {data: users = [], refetch} = useQuery(['users'], async () => {
@@ -17,10 +18,33 @@ const ManageUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
+                
                 if (data.modifiedCount) {
+                    setDisable('admin')
                     refetch()
                     Swal.fire({
                         title: `${user.name} has been promoted to Admin`,
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
+            }
+        })
+    }
+    const handleMakeInstructor = (user) => {
+        fetch(`http://localhost:3000/users/instructor/${user._id}`, {
+            method: 'PATCH',
+            headers: {'content-type': 'application/json'},
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        title: `${user.name} has been promoted as an Instructor`,
                         showClass: {
                           popup: 'animate__animated animate__fadeInDown'
                         },
@@ -63,9 +87,9 @@ const ManageUsers = () => {
                                     
                                         <td>{user.name}</td>
                                         <td className="text-end">${user.email}</td>
-                                        <td><button onClick={()=>handleMakeAdmin(user)} className="btn btn-warning">{user.role === 'admin' ? 'admin' : <FaUserShield></FaUserShield>}</button></td>
+                                        <td><button disabled={user.role === 'admin' } onClick={()=>handleMakeAdmin(user)} className="btn btn-warning">{user.role === 'admin' ? 'admin' : <FaUserShield></FaUserShield>}</button></td>
                                         <td>
-                                            <button className="btn bg-error btn-ghost"><FaChalkboardTeacher></FaChalkboardTeacher></button>
+                                            <button onClick={() => handleMakeInstructor(user)} disabled={user.role === 'instructor'} className="btn bg-error btn-ghost">{user.role === 'instructor' ? 'Instructor' : <FaChalkboardTeacher></FaChalkboardTeacher>}</button>
                                         </td>
                                     </tr>
                                 )

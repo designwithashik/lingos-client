@@ -5,6 +5,7 @@ import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
 import SelectedClasses from "../pages/Student/SelectedClasses";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
 import DashboardLayout from "../layouts/DashboardLayout";
@@ -62,7 +63,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers/>
+                element: <AdminRoute><ManageUsers/></AdminRoute>
             },
 
         // instructor routes

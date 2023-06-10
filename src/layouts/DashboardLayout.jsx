@@ -1,8 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../pages/Shared/Footer";
 import useAuth from "../hooks/useAuth";
+import useAdminVerify from "../hooks/useAdminVerify";
 
 const DashboardLayout = () => {
+  const [isAdmin] = useAdminVerify()
     const {setTheme, theme} = useAuth()
     const handleToggle = (e) => {
         if (e.target.checked) {
@@ -39,7 +41,11 @@ const DashboardLayout = () => {
               </button></li>    
               <li><Link to='/dashboard/home'>Student Home</Link></li>
               <li><Link to='/dashboard/selected-classes'>Selected Classes</Link></li>
-              <li><Link to='/dashboard/manage-classes'>Manage Classes</Link></li>
+              {isAdmin ===true && <>
+                <li><Link to='/dashboard/manage-classes'>Manage Classes</Link></li>
+                <li><Link to='/dashboard/manage-users'>Manage Users</Link></li>
+                    
+              </>}
               <li><Link to='/dashboard/add-class'>Add A Class</Link></li>
               
             

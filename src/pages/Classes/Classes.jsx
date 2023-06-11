@@ -9,7 +9,7 @@ const Classes = () => {
     console.log(allClasses)
     const handleSelectClass = (cls) => {
         
-        const selectClass = { name: cls.name, email: cls.email, instructor: cls.instructor, studentEmail: user?.email, price: cls.price, classId: cls._id}
+        const selectClass = { name: cls.name, email: cls.email, instructor: cls.instructor, studentEmail: user?.email, price: cls.price, classId: cls._id, availableSeats: cls.availableSeats}
         console.log(selectClass)
         fetch('http://localhost:3000/selected-class',
           {

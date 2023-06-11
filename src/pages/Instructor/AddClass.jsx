@@ -7,8 +7,8 @@ const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = clsData => {
         console.log(clsData)
-        const { className, classImage, email, instructor, price,seats} = clsData;
-        const saveCls = {name:className,image:classImage , email, instructor, price, seats}
+        const { className, classImage, email, instructor, price,availableSeats} = clsData;
+        const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending'}
         fetch('http://localhost:3000/classes',
             {
                 method: 'POST',
@@ -111,7 +111,7 @@ const AddClass = () => {
                             <input type="text"
                                 placeholder="Available Seats"
                                 className="input input-bordered"
-                                {...register("seats")} />
+                                {...register("availableSeats")} />
                         </div>
                     </div>
 

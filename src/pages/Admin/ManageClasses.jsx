@@ -2,13 +2,14 @@ import Swal from "sweetalert2";
 import useClasses from "../../hooks/useClasses";
 
 const ManageClasses = () => {
-  const [allClasses, refetch] = useClasses()
+  const [allClasses, ,refetch] = useClasses()
   
   const handleApproveCls = (id) => {
     const response = {decision: true, id}
-    fetch(`http://localhost:3000/selected-class/${response}`, {
+    fetch(`http://localhost:3000/selected-class/response`, {
         method: 'PATCH',
-        headers: {'content-type': 'application/json'},
+      headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(response)
     })
         .then(res => res.json())
         .then(data => {
@@ -28,9 +29,10 @@ const ManageClasses = () => {
 }
   const handleDenyCls = (id) => {
     const response = {decision: false, id}
-    fetch(`http://localhost:3000/selected-class/${response}`, {
+    fetch(`http://localhost:3000/selected-class/response`, {
         method: 'PATCH',
-        headers: {'content-type': 'application/json'},
+      headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(response)
     })
         .then(res => res.json())
         .then(data => {
@@ -97,7 +99,9 @@ const ManageClasses = () => {
           </td>
                               <td>{availableSeats}</td>
                               <td>{price}</td>
-                                <td>{status}</td>
+                              <td>
+                              <div className={`${status ==='pending'? 'bg-yellow-500':status ==='denied'? 'bg-red-500':'bg-green-500'} text-white btn cursor-none`}>{status}</div>
+                                </td>
                                 <td>
                                     <div className="flex justify-center items-center gap-2">
                                     <button onClick={()=>handleApproveCls(_id)} className="btn btn-primary btn-sm">Approve</button>

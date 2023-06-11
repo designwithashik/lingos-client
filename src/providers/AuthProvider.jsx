@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
     }
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+             <div className="body-font font-fira">{children}</div>
         </AuthContext.Provider>
     );
 };

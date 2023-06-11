@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import useUsers from "../../hooks/useUsers";
 import { useNavigate } from "react-router-dom";
+import PageBanner from "../../components/PageBanner";
 
 const Classes = () => {
   const [allClasses] = useClasses()
@@ -99,7 +100,8 @@ const Classes = () => {
     return (
 
         <div>
-            <PageTitle>Classes</PageTitle>
+        <PageTitle>Classes</PageTitle>
+        <PageBanner/>
 
             <div className="flex justify-center items-center flex-wrap mx-auto gap-5">
                 {allClasses.map(cls => {

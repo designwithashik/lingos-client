@@ -1,14 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import {FaChalkboardTeacher, FaUserShield} from 'react-icons/fa';
 import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle";
+import useUsers from "../../hooks/useUsers";
 const ManageUsers = () => {
-    const [axiosSecure] = useAxiosSecure()
-    const {data: users = [], refetch} = useQuery(['users'], async () => {
-        const res = await axiosSecure('/users')
-        return res.data;
-    })
+    const [users, refetch] = useUsers()
 
     const handleMakeAdmin = (user) => {
         fetch(`http://localhost:3000/users/admin/${user._id}`, {

@@ -2,13 +2,40 @@ import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle";
 import useClasses from "../../hooks/useClasses";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import useUsers from "../../hooks/useUsers";
+import { useNavigate } from "react-router-dom";
 
 const Classes = () => {
-    const [allClasses] = useClasses()
+  const [allClasses] = useClasses()
+  const navigate = useNavigate()
     const {user} = useAuth()
-    console.log(allClasses)
-    const handleSelectClass = (cls) => {
+  console.log(allClasses)
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const [users] = useUsers()
+  console.log(users)
+  // useEffect(() => {
+  //   if (user) {
+      
+  //   }
+  // },[user])
+  const handleSelectClass = (cls) => {
+    
+    if (user) {
+      const exitingUser = users.filter(oldUser => oldUser?.email === user.email);
+      console.log('vitore', exitingUser)
+      console.log(exitingUser.role)
+      if (exitingUser[0].role === 'admin' || exitingUser[0].role === 'instructor') {
+        console.log('vitore')
+        return setButtonDisabled(true)
         
+          }
+    }
+    else {
+     return navigate('/login')
+    }
+    
+    
         const selectClass = { name: cls.name, email: cls.email, instructor: cls.instructor, studentEmail: user?.email, price: cls.price, classId: cls._id, availableSeats: cls.availableSeats}
         console.log(selectClass)
         fetch('http://localhost:3000/selected-class',
@@ -76,15 +103,18 @@ const Classes = () => {
 
             <div className="flex justify-center items-center flex-wrap mx-auto gap-5">
                 {allClasses.map(cls => {
-                    const {image, name,instructor, _id}= cls
+                    const {image, name,instructor, _id, availableSeats}= cls
                     return ( <div key={_id} className="card w-96 h-72 image-full">
-                    <figure><img src={image} alt="class" className="object-cover w-96 h-72" /></figure>
+                      <figure><img src={image} alt="class" className="object-cover w-full h-full" /></figure>
+                     
                     <div className="card-body">
-                            <h2 className="card-title">{name}!</h2>
-                            <p>{instructor}</p>
-                        <div className="card-actions justify-end">
-                            <button onClick={()=>handleSelectClass(cls)} className="btn btn-primary">Select Class</button>
+                            <h2 className="card-title text-white">{name}!</h2>
+                            <p className="text-white">{instructor}</p>
+                            <p className="text-white">{availableSeats}</p>
+                        <div className=" justify-end">
+                            <button disabled={isButtonDisabled || !availableSeats} onClick={()=>handleSelectClass(cls)} className="btn btn-primary">Select Class</button>
                         </div>
+                      
                     </div>
                 </div>
                 )

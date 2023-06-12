@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
@@ -13,11 +12,7 @@ const NavigationBar = () => {
         }
       };
     
-      // useEffect(() => {
-      //   localStorage.setItem("theme", theme);
-      //   const localTheme = localStorage.getItem("theme");
-      //   document.querySelector("html").setAttribute("data-theme", localTheme);
-      // }, [theme]);
+      
     const navItems = <>
     
     <li><Link to='/'>Home</Link></li>
@@ -32,7 +27,7 @@ const NavigationBar = () => {
   }
     
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-[#FFF5F1]">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,7 +37,7 @@ const NavigationBar = () => {
         {navItems}
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost normal-case text-xl">lingos</Link>
+    <Link to='/' className="btn btn-ghost text-[#524FD5] normal-case text-xl">Lingos</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -51,11 +46,11 @@ const NavigationBar = () => {
   </div>
   <div className="navbar-end">
     {user?  <> 
-    <Link to='dashboard/home'><img className='w-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /></Link> 
+    <Link to='dashboard/home'><img className='object-cover w-11 h-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /></Link> 
          
-          <p onClick={handleLogOut} className="btn">Log Out</p>
+          <p onClick={handleLogOut} className="btn text-[#524FD5] bg-white border-none">Log Out</p>
           </>
-: <p className="btn"><Link to='/login'>Login</Link></p>}
+: <Link to='/login'><p className="btn text-[#524FD5] border-none bg-white">Login</p></Link>}
     <button className="btn btn-square btn-ghost">
           <label className="swap swap-rotate w-12 h-12">
             <input
@@ -64,7 +59,7 @@ const NavigationBar = () => {
               checked={theme === "light" ? false : true}
             />
             <img src={'https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f58db6031cb325cfbaf366a330cf78148c0444a/Sun.png?disposition=inline'} alt="light" className="w-8 h-8 swap-on" />
-            <img src={'https://media.istockphoto.com/id/1334613123/vector/moon-and-star-black-icon-of-moon-for-night-pictogram-of-crescent-and-star-logo-for-sleep-and.jpg?s=612x612&w=0&k=20&c=Gy6DGTiwY2lsGPXRr2f7kqPELZEUtG1MsSEce1BkPdo='} alt="dark" className="w-8 h-8 swap-off" />
+            <img src={'https://media.istockphoto.com/id/1334613123/vector/moon-and-star-black-icon-of-moon-for-night-pictogram-of-crescent-and-star-logo-for-sleep-and.jpg?s=612x612&w=0&k=20&c=Gy6DGTiwY2lsGPXRr2f7kqPELZEUtG1MsSEce1BkPdo='} alt="dark" className="w-8 h-8 swap-off rounded-full" />
           </label>
         </button>       
   </div>

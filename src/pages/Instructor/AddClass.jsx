@@ -8,7 +8,7 @@ const AddClass = () => {
     const onSubmit = clsData => {
         console.log(clsData)
         const { className, classImage, email, instructor, price,availableSeats} = clsData;
-        const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending'}
+        const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending', studentEnrolled: 0}
         fetch('http://localhost:3000/classes',
             {
                 method: 'POST',

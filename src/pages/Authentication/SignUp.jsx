@@ -78,7 +78,7 @@ const SignUp = () => {
   }
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero">
         <div className="hero-content flex-col lg:flex-row">
           <div className="w-full">
             <img className="w-full" src='https://i.ibb.co/dPSg86q/undraw-welcome-cats-thqn.png

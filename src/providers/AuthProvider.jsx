@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import {GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { app } from "../firebase/firebase.config";
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
 
 
-    
+
     const auth = getAuth(app);
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
@@ -39,13 +39,13 @@ const AuthProvider = ({ children }) => {
                     .then(data => {
                         const token = data.data.token;
                         localStorage.setItem('access-token', token)
-            setLoading(false)
+                        setLoading(false)
 
-                })
+                    })
             }
             else {
                 localStorage.removeItem('access-token')
-            setLoading(false)
+                setLoading(false)
 
             }
         })
@@ -53,22 +53,22 @@ const AuthProvider = ({ children }) => {
             return unsubscribe();
         }
     }, [auth])
-    
+
 
 
     //toggle mode
 
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-      );
-    
-      
-    
-      useEffect(() => {
+    );
+
+
+
+    useEffect(() => {
         localStorage.setItem("theme", theme);
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute("data-theme", localTheme);
-      }, [theme]);
+    }, [theme]);
     const authInfo = {
         googleLogin,
         emailSignUp,
@@ -81,9 +81,10 @@ const AuthProvider = ({ children }) => {
         setTheme
 
     }
+
     return (
         <AuthContext.Provider value={authInfo}>
-             <div className="body-font font-fira">{children}</div>
+            {children}
         </AuthContext.Provider>
     );
 };

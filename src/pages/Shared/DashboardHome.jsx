@@ -6,7 +6,9 @@ const DashboardHome = () => {
     
     return (
         <div>
-            <h2 className="text-lg font-bold">Welcome Back, {user?.displayName}</h2>
+            <h2 className="text-xl font-bold">Welcome Back, {user?.displayName}</h2>
+            <img className="w-full" src='https://i.ibb.co/dPSg86q/undraw-welcome-cats-thqn.png
+' alt="welcome" />
         </div>
     );
 };

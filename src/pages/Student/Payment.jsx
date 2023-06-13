@@ -2,6 +2,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import {useLocation} from 'react-router-dom'
 import CheckOutForm from './CheckOutForm';
 import { loadStripe } from '@stripe/stripe-js';
+import PaymentHistory from './PaymentHistory'
 const Payment = () => {
     const location = useLocation()
     const selectedClass = location.state.data;
@@ -11,11 +12,18 @@ const Payment = () => {
 
     
     return (
-        <div className="m-9">
-            <h2>Please Pay Here</h2>
+        <div className="">
+            <h2 className='text-lg mt-28'>Please Pay Here</h2>
             <Elements stripe={stripePromise}>
                 <CheckOutForm cls={selectedClass} />
             </Elements>
+
+            <div className="my-28">
+            <h2 className='text-lg mt-28'>Previous Payment History</h2>
+
+                <PaymentHistory/>
+            </div>
+
         </div>
     );
 

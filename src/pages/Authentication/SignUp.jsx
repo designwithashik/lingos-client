@@ -32,7 +32,7 @@ const SignUp = () => {
           .catch((error) => {
             setError(error.message)
           });
-        const saveUser = { name: data.name, email: data.email }
+        const saveUser = { name: data.name, email: data.email, role: 'student' }
         console.log(res.user)
         fetch('http://localhost:3000/users',
           {

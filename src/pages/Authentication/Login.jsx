@@ -2,6 +2,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 const Login = () => {
     const { googleLogin, emailLogin } = useAuth();
     
@@ -23,7 +24,45 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         googleLogin()
-            .then(res => console.log(res.user))
+          .then(res => {
+            console.log(res.user)
+            const saveUser = { name: res.displayName, email: res.email, role: 'student' }
+        console.log(res.user)
+        fetch('http://localhost:3000/users',
+          {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              
+
+              })
+            
+
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed up successfully'
+              })
+            }
+
+          })
+          })
         .catch(error=>console.log(error))
     }
     return (

@@ -11,6 +11,8 @@ const PaymentHistory = () => {
     },[])
     return (
         <div>
+            <h2 className='text-lg'>Previous Payment History</h2>
+
             <table className="table w-full">
                         {/* head */}
                         <thead>
@@ -18,7 +20,7 @@ const PaymentHistory = () => {
                                 <th>
                                     #
                                 </th>
-                                <th>Name</th>
+                                <th>Class Name</th>
                                 <th>Transaction ID</th>
                                 <th>Date</th>
                                 <th>Price</th>

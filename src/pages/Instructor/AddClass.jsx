@@ -8,7 +8,7 @@ const AddClass = () => {
     const onSubmit = clsData => {
         console.log(clsData)
         const { className, classImage, email, instructor, price,availableSeats} = clsData;
-        const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending', studentEnrolled: 0}
+        const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending', studentsEnrolled: 0}
         fetch('http://localhost:3000/classes',
             {
                 method: 'POST',
@@ -38,7 +38,7 @@ const AddClass = () => {
 
               Toast.fire({
                 icon: 'success',
-                title: 'Signed up successfully'
+                title: 'Class is added successfully'
               })
             }
 
@@ -77,7 +77,7 @@ const AddClass = () => {
                             <label className="label">
                                 <span className="label-text">Instructor Email</span>
                             </label>
-                            <input disabled type="email"
+                            <input readOnly type="email"
                                 defaultValue={user?.email}
                                 className="input input-bordered"
                                 {...register("email")} />
@@ -88,6 +88,7 @@ const AddClass = () => {
                             </label>
                             {/* TODO: instructor allowing data while button is disabled */}
                             <input type='text'
+                                readOnly
                                 defaultValue={user?.displayName}
                                 className="input input-bordered" {...register("instructor")} />
 

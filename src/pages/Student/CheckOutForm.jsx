@@ -5,8 +5,8 @@ import './CheckOutForm.css'
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 const CheckOutForm = ({ cls }) => {
-    const {price, name, _id, classId, availableSeats, studentEnrolled,instructor} = cls
-  
+    const {price, name, _id, classId, availableSeats, studentsEnrolled,instructor} = cls
+    console.log(studentsEnrolled)
     const stripe = useStripe();
   const elements = useElements();
     const [cardError, setCardError] = useState();
@@ -83,7 +83,7 @@ const CheckOutForm = ({ cls }) => {
         const transactionId = paymentIntent.id;
         setTransactionId(transactionId)
         const payment = {
-          email: user?.email, transactionId, price, date: new Date(), clsName: name, checkoutId: _id, classId, availableSeats, studentEnrolled, instructor
+          email: user?.email, transactionId, price, date: new Date(), clsName: name, checkoutId: _id, classId, availableSeats, studentsEnrolled, instructor
         }
         axiosSecure.post('/payments', payment)
           .then(res => {

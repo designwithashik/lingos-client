@@ -16,6 +16,8 @@ import ManageUsers from "../pages/Admin/ManageUsers";
 import Payment from "../pages/Student/Payment";
 import PaymentHistory from "../pages/Student/PaymentHistory";
 import StudentEnrolledClasses from "../pages/Student/StudentEnrolledClasses";
+import MyClasses from "../pages/Instructor/MyClasses";
+import Feedback from "../pages/Instructor/Feedback";
 
 const routes = createBrowserRouter([
     {
@@ -85,6 +87,14 @@ const routes = createBrowserRouter([
             {
                 path: 'add-class',
                 element:<AddClass/>
+            },
+            {
+                path: 'my-classes',
+                element: <MyClasses/>
+            },
+            {
+                path: 'feedback',
+                element: <Feedback/>
             }
         ]
         

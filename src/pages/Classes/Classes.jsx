@@ -12,6 +12,7 @@ const Classes = () => {
   const { user } = useAuth()
   const [singleUser,setSingleUser] = useState([])
   console.log(allClasses)
+  const classes = allClasses.filter(cls=>cls.status==='approved')
   const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   
@@ -23,25 +24,26 @@ const Classes = () => {
       fetch(`http://localhost:3000/user/${user?.email}`)
         .then(res => res.json())
       .then(data=>setSingleUser(data))
-           console.log(singleUser)
+           console.log(singleUser.length)
       
       let exitingUser
       if (singleUser.email === user.email) {
         exitingUser = singleUser
       }  
-      console.log('vitore', exitingUser)
-      console.log(exitingUser.role)
-      if (exitingUser.role === 'admin' || exitingUser.role === 'instructor') {
-        console.log('vitore')
-        return setButtonDisabled(true)
-        
-          }
+      
+      if (singleUser.length) {
+        if (exitingUser.role === 'admin' || exitingUser.role === 'instructor') {
+          console.log('vitore')
+          return setButtonDisabled(true)
+          
+            }
+      }
     }
     else {
      return navigate('/login')
     }
     
-        const selectClass = { name: cls.name, email: cls.email, instructor: cls.instructor, studentEmail: user?.email, price: cls.price, classId: cls._id, availableSeats: cls.availableSeats}
+        const selectClass = { name: cls.name, email: cls.email, instructor: cls.instructor, studentEmail: user?.email, price: cls.price, classId: cls._id, availableSeats: cls.availableSeats, studentsEnrolled: cls.studentsEnrolled}
         console.log(selectClass)
         fetch('http://localhost:3000/selected-class',
           {
@@ -108,7 +110,7 @@ const Classes = () => {
         <PageBanner/>
 
             <div className="flex justify-center items-center flex-wrap mx-auto gap-5">
-                {allClasses.map(cls => {
+                {classes.map(cls => {
                     const {image, name,instructor, _id, availableSeats}= cls
                     return ( <div key={_id} className="card  w-96 h-72">
                       <img src={image} alt="class" className="object-cover w-full h-full rounded-box" />

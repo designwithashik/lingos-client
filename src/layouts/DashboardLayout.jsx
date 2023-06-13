@@ -18,7 +18,7 @@ const DashboardLayout = () => {
             <div className=" min-h-[calc(100vh-220px)]">
             <NavigationBar />
 
-              <div className="mx-11"><Outlet /></div>
+              <div className="mx-11 py-5"><Outlet /></div>
             </div>
                     <Footer/>
     
@@ -35,20 +35,18 @@ const DashboardLayout = () => {
                 <li><Link to='/dashboard/manage-users'>Manage Users</Link></li> </>
                 : isInstructor === true? <>
                 <li><Link to='/dashboard/add-class'>Add A Class</Link></li>
+                <li><Link to='/dashboard/my-classes'>My Classes</Link></li>
               </>: <>
-              <li><Link to='/dashboard/selected-classes'>Selected Classes</Link></li>
+                    <li><Link to='/dashboard/selected-classes'>Selected Classes</Link></li>
+                <li><Link to='/dashboard/payment-history'>Previous Payments</Link></li>
+                    
                 </>}
-              
-             
-              
+    
 
             
               
             
-              <hr />
-              <li><Link to='/'>Home</Link></li>
-    <li><Link to='/instructors'>Instructors</Link></li>
-    <li><Link to='/classes'>Classes</Link></li>
+              
     </ul>
   
   </div>

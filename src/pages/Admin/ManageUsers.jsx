@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle";
 import useUsers from "../../hooks/useUsers";
 const ManageUsers = () => {
-    const [users, refetch] = useUsers()
+    const [users, ,refetch] = useUsers()
 
     const handleMakeAdmin = (user) => {
         fetch(`http://localhost:3000/users/admin/${user._id}`, {
@@ -79,7 +79,7 @@ const ManageUsers = () => {
                                         
                                     
                                         <td>{user.name}</td>
-                                        <td className="text-end">${user.email}</td>
+                                        <td className="">{user.email}</td>
                                         <td><button disabled={user.role === 'admin' } onClick={()=>handleMakeAdmin(user)} className="btn btn-warning">{user.role === 'admin' ? 'admin' : <FaUserShield></FaUserShield>}</button></td>
                                         <td>
                                             <button onClick={() => handleMakeInstructor(user)} disabled={user.role === 'instructor'} className="btn bg-error btn-ghost">{user.role === 'instructor' ? 'Instructor' : <FaChalkboardTeacher></FaChalkboardTeacher>}</button>

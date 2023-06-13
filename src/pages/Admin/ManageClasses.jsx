@@ -1,10 +1,66 @@
 import Swal from "sweetalert2";
 import useClasses from "../../hooks/useClasses";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const ManageClasses = () => {
-  const [allClasses, ,refetch] = useClasses()
-  
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [feedbackCls, setFeedbackCls] =useState()
+  const [allClasses, , refetch] = useClasses()
+  const handleFeedback = (cls) => {
+    setFeedbackCls(cls)
+    window.my_modal_5.showModal()
+  }
+  const onSubmit = data => { 
+    const {_id, email, name, status} = feedbackCls
+    const clsFeedback = {
+      clsId: _id,
+      email,
+      status,
+      name,
+      feedback: data.feedback
+
+    }
+    fetch('http://localhost:3000/feedback',
+          {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(clsFeedback)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              
+
+              })
+            
+
+              Toast.fire({
+                icon: 'success',
+                title: 'Feedback is sent!'
+              })
+            }
+
+            
+
+            })
+
+  }
   const handleApproveCls = (id) => {
+    
     const response = {decision: true, id}
     fetch(`http://localhost:3000/selected-class/response`, {
         method: 'PATCH',
@@ -13,8 +69,9 @@ const ManageClasses = () => {
     })
         .then(res => res.json())
         .then(data => {
-            if (data.modifiedCount) {
-                refetch()
+          if (data.modifiedCount) {
+            refetch()
+            
                 Swal.fire({
                     title: `Class has been approved`,
                     showClass: {
@@ -37,7 +94,8 @@ const ManageClasses = () => {
         .then(res => res.json())
         .then(data => {
             if (data.modifiedCount) {
-                refetch()
+              refetch()
+              
                 Swal.fire({
                     title: `Class has been disapproved`,
                     showClass: {
@@ -91,10 +149,9 @@ const ManageClasses = () => {
             </div>
           </td>
                                 <td>
-                                    {/* TODO: add gmail and status */}
                                     {instructor}
                                     <br />
-                                   blabla.gmail.com
+                                    {email}
             
           </td>
                               <td>{availableSeats}</td>
@@ -104,12 +161,12 @@ const ManageClasses = () => {
                                 </td>
                                 <td>
                                     <div className="flex justify-center items-center gap-2">
-                                    <button onClick={()=>handleApproveCls(_id)} className="btn btn-primary btn-sm">Approve</button>
+                                    <button disabled={status === 'approved' || status ==='denied'}  onClick={()=>handleApproveCls(_id)} className="btn btn-primary btn-sm">Approve</button>
                                     
-                                    <button onClick={()=>handleDenyCls(_id)} className="btn btn-error btn-sm ">Deny</button>
+                                    <button disabled={status === 'approved' || status ==='denied'} onClick={()=>handleDenyCls(_id)} className="btn btn-error btn-sm ">Deny</button>
                                     </div>
                                 </td>
-                              <td><button onClick={()=>window.my_modal_5.showModal()} className="btn btn-primary btn-sm">Send Feedback</button></td>
+                              <td><button onClick={()=>handleFeedback(cls)} className="btn btn-primary btn-sm">Send Feedback</button></td>
           
         </tr>
         
@@ -122,14 +179,16 @@ const ManageClasses = () => {
         </div>
         {/* Open the modal using ID.showModal() method */}
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-  <form method="dialog" className="modal-box">
+          <form method="dialog" className="modal-box">
+          <button htmlFor="my-modal-3" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+
     <h3 className="font-bold text-lg">Provide Feedback!</h3>
             <div className="py-4">
-            <textarea name="" id="" cols="60" rows="10"></textarea> 
+            <textarea {...register('feedback')} placeholder="Congratulations ..." className="text-area w-full h-72  border-4"></textarea> 
     </div>
     <div className="modal-action">
       {/* if there is a button in form, it will close the modal */}
-      <button className="btn">Send</button>
+              <button onClick={handleSubmit(onSubmit)} className="btn">Send</button>
     </div>
   </form>
 </dialog>

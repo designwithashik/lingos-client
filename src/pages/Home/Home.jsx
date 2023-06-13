@@ -1,4 +1,6 @@
 import Slider from "./Slider";
+import TopClasses from "./TopClasses";
+import TopInstructors from "./TopInstructors";
 
 const Home = () => {
     
@@ -6,7 +8,8 @@ const Home = () => {
         <div>
            
             <Slider/>
-
+            <TopClasses />
+            <TopInstructors/>
         </div>
     );
 };

@@ -27,8 +27,8 @@ const NavigationBar = () => {
   }
     
     return (
-        <div className="navbar bg-[#FFF5F1]">
-  <div className="navbar-start">
+        <div className="navbar flex md:flex-row  flex-col bg-[#FFF5F1]">
+  <div className="navbar-start lg:flex-none justify-between w-full md:w-auto">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -44,11 +44,11 @@ const NavigationBar = () => {
       {navItems}
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end flex md:w-auto w-full justify-evenly flex-row ml-auto">
     {user?  <> 
-    <Link to='dashboard/home'><img className='object-cover w-11 h-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' /></Link> 
-         
-          <p onClick={handleLogOut} className="btn text-[#524FD5] bg-white border-none">Log Out</p>
+            <Link to='dashboard/home'><img className='object-cover w-11 h-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' />
+            </Link> 
+          <button onClick={handleLogOut} className="btn text-[#524FD5] bg-white border-none">Log Out</button>
           </>
 : <Link to='/login'><p className="btn text-[#524FD5] border-none bg-white">Login</p></Link>}
     <button className="btn btn-square btn-ghost">

@@ -1,9 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../pages/Shared/Footer";
-import useAuth from "../hooks/useAuth";
 import useAdminVerify from "../hooks/useAdminVerify";
 import useInstructorVerify from "../hooks/useInstructorVerify";
 import NavigationBar from "../pages/Shared/NavigationBar";
+import { FaCashRegister, FaChalkboardTeacher, FaHome, FaPen, FaPersonBooth, FaPlusCircle, FaVideo } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const [isAdmin] = useAdminVerify()
@@ -29,16 +29,16 @@ const DashboardLayout = () => {
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
         
-              <li><Link to='/dashboard/home'>{isAdmin? 'Admin':isInstructor?'Instructor':'Student'} Home</Link></li>
+              <li><Link to='/dashboard/home'><FaHome/> {isAdmin? 'Admin':isInstructor?'Instructor':'Student'} Home</Link></li>
               {isAdmin ===true? <>
-                <li><Link to='/dashboard/manage-classes'>Manage Classes</Link></li>
-                <li><Link to='/dashboard/manage-users'>Manage Users</Link></li> </>
+                <li><Link to='/dashboard/manage-classes'><FaChalkboardTeacher/> Manage Classes</Link></li>
+                <li><Link to='/dashboard/manage-users'><FaPersonBooth/> Manage Users</Link></li> </>
                 : isInstructor === true? <>
-                <li><Link to='/dashboard/add-class'>Add A Class</Link></li>
-                <li><Link to='/dashboard/my-classes'>My Classes</Link></li>
+                <li><Link to='/dashboard/add-class'><FaPlusCircle/> Add A Class</Link></li>
+                <li><Link to='/dashboard/my-classes'><FaVideo/> My Classes</Link></li>
               </>: <>
-                    <li><Link to='/dashboard/selected-classes'>Selected Classes</Link></li>
-                <li><Link to='/dashboard/payment-history'>Previous Payments</Link></li>
+                    <li><Link to='/dashboard/selected-classes'><FaPen/> Selected Classes</Link></li>
+                <li><Link to='/dashboard/payment-history'><FaCashRegister/> Previous Payments</Link></li>
                     
                 </>}
     

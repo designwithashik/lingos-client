@@ -1,3 +1,5 @@
+import { Fade } from "react-awesome-reveal";
+
 const Slider = () => {
   return (
     <div className="w-full">
@@ -5,8 +7,10 @@ const Slider = () => {
         <div id="slide1" className="carousel-item relative w-full text-white">
           <div className=" font-normal lg:ml-11 absolute top-1/3 md:flex-col flex mx-2 gap-2">
             <div className="">
+              <Fade>
               <h2 className="lg:text-5xl text-sm font-medium ">A <span className=" text-[#524FD5]">unique</span> approach <br /> to learning foreign languages online</h2>
-              <p className="my-4 hidden md:block">Learn at your own pace, with lifetime <br /> access on mobile and desktop</p>
+                <p className="my-4 hidden md:block">Learn at your own pace, with lifetime <br /> access on mobile and desktop</p>
+                </Fade>
             </div>
             <div className=""><button className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</button></div>
           </div>

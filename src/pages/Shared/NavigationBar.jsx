@@ -46,7 +46,7 @@ const NavigationBar = () => {
   </div>
   <div className="navbar-end flex md:w-auto w-full justify-evenly flex-row ml-auto">
     {user?  <> 
-            <Link to='dashboard/home'><img className='object-cover w-11 h-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' />
+            <Link to='/dashboard/home'><img className='object-cover w-11 h-11 rounded-box m-2' src={user?.photoURL} title={user?.displayName} alt='user' />
             </Link> 
           <button onClick={handleLogOut} className="btn text-[#524FD5] bg-white border-none">Log Out</button>
           </>

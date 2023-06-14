@@ -23,8 +23,7 @@ const Feedback = () => {
         </th>
         <th>Class</th>
         <th>Feedback</th>
-        <th> Seats</th>
-        <th>Price</th>
+        <th> Email</th>
         <th>Status</th>
         <th></th>
       </tr>

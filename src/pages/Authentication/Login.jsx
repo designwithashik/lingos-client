@@ -1,12 +1,15 @@
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const Login = () => {
+  const location = useLocation()
+  const navigate = useNavigate();
+  const from = location?.state?.from || '/';
     const { googleLogin, emailLogin } = useAuth();
     
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
     const [error, setError] = useState('')
     const [toggle, setToggle] = useState(false)
     const handleToggle = () => {
@@ -17,7 +20,11 @@ const Login = () => {
         setError('')
        
         console.log(data);
-        emailLogin(data.email, data.password)
+      emailLogin(data.email, data.password)
+        .then(res => {
+          console.log(res.user)
+          navigate(from, { replace: true})
+          })
             .catch(error => setError(error.message))
     }
 
@@ -57,7 +64,7 @@ const Login = () => {
 
               Toast.fire({
                 icon: 'success',
-                title: 'Signed up successfully'
+                title: 'Logged in successfully'
               })
             }
 
@@ -87,11 +94,9 @@ const Login = () => {
           </label>
                                 <input type={toggle ? 'text' : 'password'} placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
                                 
-                                <input onClick={handleToggle} type="checkbox" className="toggle toggle-info"  />
+                                <input onClick={handleToggle} type="checkbox" className="toggle toggle-info mt-2"  />
 
                             </div>
-                            {/**TODO: Empty Login Validation */}
-                            {/* {errors.password || errors.email? setError('Please Fill Up'): setError('')} */}
                             {error && <p className="text-red-500">{error}</p>}
                             <p>Create an Account <Link to='/sign-up' className="text-purple-500">Here</Link></p>
         <div className="form-control mt-6">
@@ -100,7 +105,7 @@ const Login = () => {
                             </div>
                             
                         </form>
-                        <button onClick={handleGoogleLogIn} className="btn btn-primary">Connect with google</button>
+                        <button onClick={handleGoogleLogIn} className="btn btn-primary mb-7 mx-3">Connect with google</button>
     </div>
   </div>
 </div>

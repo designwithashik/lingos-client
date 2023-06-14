@@ -17,7 +17,7 @@ const TopClasses = () => {
                             <br />
                             Students: {cls.studentsEnrolled}
                             <br />
-                            Price: {cls.price}</p>
+                            Price: {cls.price}$</p>
                        
                     </div>
    

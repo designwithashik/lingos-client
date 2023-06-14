@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const AddClass = () => {
     const { user } = useAuth()
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = clsData => {
         console.log(clsData)
         const { className, classImage, email, instructor, price,availableSeats} = clsData;
@@ -19,7 +19,8 @@ const AddClass = () => {
           })
           .then(res => res.json())
           .then(data => {
-            console.log(data)
+              console.log(data)
+                reset()
             {
               const Toast = Swal.mixin({
                 toast: true,
@@ -48,11 +49,11 @@ const AddClass = () => {
 
     }
     return (
-        <div>
+        <>
 
-            <div className="">
-                <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="flex gap-5">
+            <div className="w-full">
+                <form className="" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="flex gap-5 justify-center items-center">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Class Name</span>
@@ -72,7 +73,7 @@ const AddClass = () => {
                                 {...register("classImage")} />
                         </div>
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 justify-center items-center">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Instructor Email</span>
@@ -86,7 +87,7 @@ const AddClass = () => {
                             <label className="label">
                                 <span className="label-text">Instructor Name</span>
                             </label>
-                            {/* TODO: instructor allowing data while button is disabled */}
+
                             <input type='text'
                                 readOnly
                                 defaultValue={user?.displayName}
@@ -95,7 +96,7 @@ const AddClass = () => {
                         </div>
                     </div>
 
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 justify-center items-center">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Price</span>
@@ -117,14 +118,13 @@ const AddClass = () => {
                     </div>
 
 
-                    <div className="form-control mt-6">
-                        <button type="submit" className="btn btn-primary">Add Class</button>
-
+                    <div className="form-control mt-6 ">
+                        <button type="submit" className="btn btn-primary max-w-sm mx-auto">Add Class</button>
                     </div>
 
                 </form>
             </div>
-        </div>
+        </>
     );
 };
 

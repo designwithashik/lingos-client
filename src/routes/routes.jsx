@@ -18,6 +18,7 @@ import PaymentHistory from "../pages/Student/PaymentHistory";
 import StudentEnrolledClasses from "../pages/Student/StudentEnrolledClasses";
 import MyClasses from "../pages/Instructor/MyClasses";
 import Feedback from "../pages/Instructor/Feedback";
+import InstructorRoute from "./InstructorRoute";
 
 const routes = createBrowserRouter([
     {
@@ -86,15 +87,15 @@ const routes = createBrowserRouter([
             
             {
                 path: 'add-class',
-                element:<AddClass/>
+                element:<InstructorRoute><AddClass/></InstructorRoute>
             },
             {
                 path: 'my-classes',
-                element: <MyClasses/>
+                element:<InstructorRoute><MyClasses/></InstructorRoute>
             },
             {
                 path: 'feedback',
-                element: <Feedback/>
+                element: <InstructorRoute><Feedback/></InstructorRoute>
             }
         ]
         

@@ -6,7 +6,7 @@ const useSelectedClass = (studentEmail) => {
         queryKey: ['classes'],
     
         queryFn: async () => {
-            const res = await fetch(`http://localhost:3000/selected-classes?email=${studentEmail}`)
+            const res = await fetch(`https://lingos-server.vercel.app/selected-classes?email=${studentEmail}`)
             return res.json()
         }
         

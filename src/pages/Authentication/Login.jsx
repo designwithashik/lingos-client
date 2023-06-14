@@ -35,7 +35,7 @@ const Login = () => {
             console.log(res.user)
             const saveUser = { name: res.displayName, email: res.email, role: 'student' }
         console.log(res.user)
-        fetch('http://localhost:3000/users',
+        fetch('https://lingos-server.vercel.app/users',
           {
             method: 'POST',
             headers: {
@@ -88,13 +88,13 @@ const Login = () => {
                                 <input type="email" placeholder="email" className="input input-bordered"
                                     {...register("email", { required: true })} />
         </div>
-        <div className="form-control">
+        <div className="form-control relative">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
                                 <input type={toggle ? 'text' : 'password'} placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
                                 
-                                <input onClick={handleToggle} type="checkbox" className="toggle toggle-info mt-2"  />
+                                <input onClick={handleToggle} type="checkbox" className="toggle toggle-info mt-2 absolute top-0 right-0"  />
 
                             </div>
                             {error && <p className="text-red-500">{error}</p>}

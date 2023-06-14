@@ -1,3 +1,4 @@
+import { Slide } from "react-awesome-reveal";
 import useInstructors from "../../hooks/useInstructors";
 
 const Instructors = () => {
@@ -5,13 +6,16 @@ const Instructors = () => {
     console.log(allInstructors)
     return (
         <div>
-            {/* TODO: Hover effect */}
-            <div className="flex justify-center items-center flex-wrap mx-auto gap-0">
+            <Slide>
+                <h2 className="text-xl mb-7 text-center">Worldwide Famous Instructors</h2>
+            </Slide>
+            <div className="flex justify-center items-center flex-wrap mx-auto gap-3">
             {allInstructors.map(instructor => {
-                const {image, name, _id} = instructor
+                const {image, name, _id, numClassesTaken} = instructor
                 return (<div key={_id}>
                     <img className="w-64 h-72 object-cover" src={image} alt="instructor" />
-                    <h2>{name}</h2>
+                    <h2 className="text-lg">{name}</h2>
+                    <p>Classes Taken: {numClassesTaken}</p>
                 </div>)
             })}
             </div>

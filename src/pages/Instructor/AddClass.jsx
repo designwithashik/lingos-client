@@ -9,7 +9,7 @@ const AddClass = () => {
         console.log(clsData)
         const { className, classImage, email, instructor, price,availableSeats} = clsData;
         const saveCls = {name:className,image:classImage , email, instructor, price, availableSeats, status: 'pending', studentsEnrolled: 0}
-        fetch('http://localhost:3000/classes',
+        fetch('https://lingos-server.vercel.app/classes',
             {
                 method: 'POST',
                 headers: {

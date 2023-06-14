@@ -21,7 +21,7 @@ const ManageClasses = () => {
       feedback: data.feedback
 
     }
-    fetch('http://localhost:3000/feedback',
+    fetch('https://lingos-server.vercel.app/feedback',
           {
             method: 'POST',
             headers: {
@@ -62,7 +62,7 @@ const ManageClasses = () => {
   const handleApproveCls = (id) => {
     
     const response = {decision: true, id}
-    fetch(`http://localhost:3000/selected-class/response`, {
+    fetch(`https://lingos-server.vercel.app/selected-class/response`, {
         method: 'PATCH',
       headers: { 'content-type': 'application/json' },
         body: JSON.stringify(response)
@@ -86,7 +86,7 @@ const ManageClasses = () => {
 }
   const handleDenyCls = (id) => {
     const response = {decision: false, id}
-    fetch(`http://localhost:3000/selected-class/response`, {
+    fetch(`https://lingos-server.vercel.app/selected-class/response`, {
         method: 'PATCH',
       headers: { 'content-type': 'application/json' },
         body: JSON.stringify(response)

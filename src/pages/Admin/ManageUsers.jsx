@@ -6,7 +6,7 @@ const ManageUsers = () => {
     const [users, ,refetch] = useUsers()
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:3000/users/admin/${user._id}`, {
+        fetch(`https://lingos-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH',
             headers: {'content-type': 'application/json'},
         })
@@ -28,7 +28,7 @@ const ManageUsers = () => {
         })
     }
     const handleMakeInstructor = (user) => {
-        fetch(`http://localhost:3000/users/instructor/${user._id}`, {
+        fetch(`https://lingos-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH',
             headers: {'content-type': 'application/json'},
         })

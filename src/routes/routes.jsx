@@ -79,7 +79,7 @@ const routes = createBrowserRouter([
         // admin routes
             {
                 path: 'manage-classes',
-                element: <ManageClasses/>
+                element: <AdminRoute><ManageClasses/></AdminRoute>
             },
             {
                 path: 'manage-users',

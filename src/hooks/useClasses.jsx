@@ -5,7 +5,7 @@ const useClasses = () => {
     const { data: allClasses = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/classes')
+            const res = await fetch('https://lingos-server.vercel.app/classes')
             return res.json()
         }
         

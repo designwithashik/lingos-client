@@ -10,3 +10,7 @@
 - At my classes page Instructor sees this classes with the status and feedback.
 - At home look at classes separated by top classes.
 - Buy a class using stripe while signing up as a student user can purchase class with visa/master card also.
+
+## Technologies: React, MongoDB, NodeJS, ExpressJS, TailwindCSS, Vite, DaisyUI
+
+## Packages: React Router, React Hook Form, Axios, Tanstack Query, React Awesome Reveal, React Icons, React Helmet

@@ -5,7 +5,7 @@ const PaymentHistory = () => {
     const { user } = useAuth()
     const [payments, setPayments] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3000/payments?email=${user.email}`)
+        fetch(`https://lingos-server.vercel.app/payments?email=${user.email}`)
             .then(res => res.json())
         .then(data=>setPayments(data))
     },[])

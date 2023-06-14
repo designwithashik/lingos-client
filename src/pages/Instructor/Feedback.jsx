@@ -5,7 +5,7 @@ const Feedback = () => {
     const {user} = useAuth()
     const [feedbacks, setFeedbacks] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3000/feedback`)
+        fetch(`https://lingos-server.vercel.app/feedback`)
         .then(res => res.json())
       .then(data=>setFeedbacks(data))
            console.log(feedbacks)

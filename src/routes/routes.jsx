@@ -19,11 +19,13 @@ import StudentEnrolledClasses from "../pages/Student/StudentEnrolledClasses";
 import MyClasses from "../pages/Instructor/MyClasses";
 import Feedback from "../pages/Instructor/Feedback";
 import InstructorRoute from "./InstructorRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const routes = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
@@ -50,7 +52,8 @@ const routes = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: 'home',

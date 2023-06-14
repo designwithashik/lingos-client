@@ -27,7 +27,7 @@ const NavigationBar = () => {
   }
     
     return (
-        <div className="navbar flex md:flex-row  flex-col bg-[#FFF5F1]">
+        <div className="navbar flex md:flex-row  flex-col">
   <div className="navbar-start lg:flex-none justify-between w-full md:w-auto">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">

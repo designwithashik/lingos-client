@@ -8,7 +8,7 @@ const Slider = () => {
               <h2 className="lg:text-5xl text-sm font-medium ">A <span className=" text-[#524FD5]">unique</span> approach <br /> to learning foreign languages online</h2>
               <p className="my-4 hidden md:block">Learn at your own pace, with lifetime <br /> access on mobile and desktop</p>
             </div>
-            <p className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</p>
+            <div className=""><button className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</button></div>
           </div>
           <img
             src={'https://language-center.ancorathemes.com/wp-content/uploads/2016/10/01-home-1-slide3.jpg'}
@@ -30,7 +30,7 @@ const Slider = () => {
               <h2 className="lg:text-5xl text-sm font-medium ">Select <span className=" text-[#524FD5]">classes</span> from <br /> variant of teacher  <br />to learn languages</h2>
               <p className="my-4 hidden md:block">Learn at your own pace <br />with lifetime access</p>
             </div>
-            <p className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</p>
+            <div className=""><button className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</button></div>
           </div>
           <img
             src={'https://language-center.ancorathemes.com/wp-content/uploads/2016/10/01-home-1-slide2.jpg'}
@@ -49,9 +49,9 @@ const Slider = () => {
           <div className=" font-normal lg:ml-11 absolute top-1/3 md:flex-col flex mx-2 gap-3 text-[#524fd5]">
             <div className="">
               <h2 className="lg:text-5xl text-sm font-medium">Practice <span className=" ">writing</span> from <br /> variant of exercises <br />to learn languages</h2>
-              <p className="my-4 hidden md:block">Learn at your own pace,  <br />with lifetime access</p>
+              <p className="my-4 hidden md:block">Learn at your own pace,  <br />with lifetime access for learning with ease</p>
             </div>
-            <p className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</p>
+            <div className=""><button className="btn bg-[#524FD5] border-none text-white btn-sm lg:btn-lg">Get Started</button></div>
           </div>
           <img
             src={'https://scuola.vamtam.com/wp-content/uploads/2019/11/Pic-17.jpg'}
